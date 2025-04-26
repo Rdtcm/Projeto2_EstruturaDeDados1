@@ -20,9 +20,7 @@ public class Operation {
 	 */
 	public static DLinkedList map(final LinkedListOriginal original) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		BufferedReader br = new BufferedReader();
-
-        StringBuilder sb = new StringBuilder();
+		
 	}
 
 	/**

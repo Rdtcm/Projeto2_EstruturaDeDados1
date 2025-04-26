@@ -19,6 +19,8 @@ import java.time.Year;
 public class Node {
 	private String id;
 	private String nome;
+	private float nota;
+	private Node next;
 	public String getNome() {
 		return nome;
 	}
@@ -29,7 +31,7 @@ public class Node {
 	}
 
 
-	private float nota;
+	
 	public float getNota() {
 		return nota;
 	}
@@ -40,7 +42,7 @@ public class Node {
 	}
 
 
-	private Node next;
+	
 
 	public Node getNext() {
 		return next;

@@ -16,31 +16,48 @@
 public class DLinkedList {
 	
 	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
-
+	private Node head;
+	private Node tail;
+	private int count;
 
 // OPERAÇÃO:		Método construtor
 // COMPORTAMENTO:	Cria uma lista vazia.
 	public DLinkedList() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		head = null;
+		tail = null;
+		count = 0;
 	}
 
+	
 
 // OPERAÇÃO:		insert(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
-	public void insert(/*dados da pessoa*/) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+	public void insert(int Semestre,int Id,String nome,float nota) {
+		Node node = new Node(Semestre, Id,nome,nota, null);
+		if (isEmpty()) {
+			tail = node;
+		}
+		
+		head = node;
+		++count;
 	}
 
 
 // OPERAÇÃO:		append(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no final da lista.
-	public void append(/*dados da pessoa*/) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+	public void append(int Semestre,int Id,String nome,float nota) {
+		Node node = new Node(Semestre, Id,nome,nota, null);
+		
+		if (isEmpty()) {
+			head = node;
+		} else {
+			tail.setNext(node);
+		}
+		
+		tail = node;
+		++count;
 	}
 
 
@@ -113,16 +130,16 @@ public class DLinkedList {
 // OPERAÇÃO:		isEmpty()
 // COMPORTAMENTO:	Retorna true se a lista estiver vazia ou false, caso contrário.
 	public boolean isEmpty() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		return head == null;
 	}
 
 
 // OPERAÇÃO:		clear()
 // COMPORTAMENTO:	Esvazia a lista, liberando a memória de todos os nós da lista.
 	public void clear() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		while (!isEmpty()) {
+			removeHead();
+		}
 	}
 
 
