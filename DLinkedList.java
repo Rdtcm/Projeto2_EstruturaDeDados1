@@ -38,7 +38,7 @@ public class DLinkedList {
 		if (isEmpty()) {
 			head = tail = node;
 		} else {
-			node.setProx(head);
+			node.setNext(head);
 			head.setAnt(node);
 			head = node;
 		}
@@ -54,7 +54,7 @@ public class DLinkedList {
 		if (isEmpty()) {
 			head = tail = node;
 		} else {
-			node.setProx(head);
+			node.setNext(head);
 			node.setAnt(tail);
 			tail = node;
 		}
@@ -75,10 +75,13 @@ public class DLinkedList {
 		if (head == tail) {
 			head = tail = null;
 		} else {
-			head = head.getProx();
-			head.setProx(null);
+			head = head.getNext();
+			head.setAnt(null);
+
 		}
 		count--;
+		aux.setNext(null);
+		aux.setAnt(null);
 		return aux;
 	}
 	
@@ -98,9 +101,12 @@ public class DLinkedList {
 			head = tail = null;
 		} else {
 			tail = tail.getAnt();
-			tail.setProx(null);
+			tail.setNext(null);
+
 		}
 		count--;
+		aux.setNext(null);
+		aux.setAnt(null);
 		return aux;
 	}
 
@@ -111,7 +117,21 @@ public class DLinkedList {
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node removeNode(String id) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		
+		Node node = getNode(id);
+
+		if (isEmpty()) return null;
+
+		if (node == head) return removeHead();
+		if (node == tail) return removeTail();
+
+		Node anterior = node.getAnt();
+		Node proximo = node.getNext();
+
+		anterior.setNext(proximo);
+		proximo.setAnt(anterior);
+		count--;
+
+		return node;
 	}
 
 
@@ -141,14 +161,14 @@ public class DLinkedList {
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String id) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		NodeOriginal node = head;
+		Node node = head;
+
 		while (node != null) {
-			if (node.getId() == id) {
+			if (node.getID().equals(id)) {
 				return node;
 			}
 			node = node.getNext();
 		}
-		
 		return null;
 	}
 
@@ -171,9 +191,8 @@ public class DLinkedList {
 // OPERAÇÃO:		clear()
 // COMPORTAMENTO:	Esvazia a lista, liberando a memória de todos os nós da lista.
 	public void clear() {
-		while (!isEmpty()) {
-			removeHead();
-		}
+		head = tail = null;
+		count = 0;
 	}
 
 

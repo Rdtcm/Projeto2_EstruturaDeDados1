@@ -24,7 +24,7 @@ public class Node {
 	private String nome;
 	private float nota;
 	private Node next;
-	private Node tail;
+	private Node ant;
 
 	// construtores
 	public Node() {
@@ -39,7 +39,7 @@ public class Node {
 		this.nome = nome;
 		this.nota = notaPessoal;
 		this.next = next;
-		this.tail = ant;
+		this.ant = ant;
 	}
 
 
@@ -74,23 +74,24 @@ public class Node {
 
 	
 	// metodos para andar entre os nos
-	public Node getProx() {
+	public Node getNext() {
 		return next;
 	}
 
 	public Node getAnt() {
-		return tail;
+		return ant;
 	}
 
 
-	public void setProx(Node next) {
+	public void setNext(Node next) {
 		this.next = next;
 	}
 
 	public void setAnt(Node ant) {
-		this.tail = ant;
+		this.ant = ant;
 	}
 
 	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
+	// FAZER O TO STRING DO NODE
 
 }
