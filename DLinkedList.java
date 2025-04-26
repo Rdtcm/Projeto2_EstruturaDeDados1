@@ -117,7 +117,15 @@ public class DLinkedList {
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String id) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
+		NodeOriginal node = head;
+		while (node != null) {
+			if (node.getId() == id) {
+				return node;
+			}
+			node = node.getNext();
+		}
 		
+		return null;
 	}
 
 
