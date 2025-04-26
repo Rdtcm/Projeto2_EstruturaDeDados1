@@ -16,31 +16,49 @@
 public class DLinkedList {
 	
 	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
-
+	private Node head;
+	private Node tail;
+	private int count;
 
 // OPERAÇÃO:		Método construtor
 // COMPORTAMENTO:	Cria uma lista vazia.
 	public DLinkedList() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		head = null;
+		tail = null;
+		count = 0;
 	}
 
+	
 
 // OPERAÇÃO:		insert(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
-	public void insert(/*dados da pessoa*/) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+	public void insert(Node node) {
+
+		if (isEmpty()) {
+			head = tail = node;
+		} else {
+			node.setProx(head);
+			head.setAnt(node);
+			head = node;
+		}
+		count++;
 	}
 
 
 // OPERAÇÃO:		append(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no final da lista.
-	public void append(/*dados da pessoa*/) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+	public void append(Node node) {
+		
+		if (isEmpty()) {
+			head = tail = node;
+		} else {
+			node.setProx(head);
+			node.setAnt(tail);
+			tail = node;
+		}
+		++count;
 	}
 
 
@@ -50,8 +68,23 @@ public class DLinkedList {
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeHead() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if (isEmpty()) return null;
+
+		Node aux = head;
+
+		if (head == tail) {
+			head = tail = null;
+		} else {
+			head = head.getNext();
+			head.setAnt(null);
+
+		}
+		count--;
+		aux.setProx(null);
+		aux.setAnt(null);
+		return aux;
 	}
+	
 
 
 // OPERAÇÃO:		removeTail()
@@ -60,7 +93,21 @@ public class DLinkedList {
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeTail() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if (isEmpty()) return null;
+
+		Node aux = tail;
+
+		if (head == tail) {
+			head = tail = null;
+		} else {
+			tail = tail.getAnt();
+			tail.setProx(null);
+
+		}
+		count--;
+		aux.setProx(null);
+		aux.setAnt(null);
+		return aux;
 	}
 
 
@@ -70,7 +117,21 @@ public class DLinkedList {
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node removeNode(String id) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		Node node = getNode(id);
+
+		if (isEmpty()) return null;
+
+		if (node == head) return removeHead();
+		if (node == tail) return removeTail();
+
+		Node anterior = node.getAnt();
+		Node proximo = node.getNext();
+
+		anterior.setProx(proximo);
+		proximo.setAnt(anterior);
+		count--;
+
+		return node;
 	}
 
 
@@ -78,8 +139,9 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna uma referência para o nó do início da lista.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node getHead() {
+		if (! isEmpty()) return head;
+		else return null;
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
 	}
 
 
@@ -88,7 +150,8 @@ public class DLinkedList {
 //					Ou retorna null caso a lista esteja vazia.
 	public Node getTail() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if (! isEmpty()) return tail;
+		else return null;
 	}
 
 
@@ -98,7 +161,15 @@ public class DLinkedList {
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String id) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		Node node = head;
+
+		while (node != null) {
+			if (node.getID().equals(id)) {
+				return node;
+			}
+			node = node.getNext();
+		}
+		return null;
 	}
 
 
@@ -106,23 +177,22 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna a quantidade de nós da lista.
 	public int count() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		return count;
 	}
 
 
 // OPERAÇÃO:		isEmpty()
 // COMPORTAMENTO:	Retorna true se a lista estiver vazia ou false, caso contrário.
 	public boolean isEmpty() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		return head == null; // || tail == null;
 	}
 
 
 // OPERAÇÃO:		clear()
 // COMPORTAMENTO:	Esvazia a lista, liberando a memória de todos os nós da lista.
 	public void clear() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		head = tail = null;
+		count = 0;
 	}
 
 

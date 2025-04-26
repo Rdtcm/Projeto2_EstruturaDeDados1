@@ -14,11 +14,35 @@
 // -- A classe deve sobrescrever (override) o método public String toString()
 // {...}, retornando uma string com os valores dos atributos da classe.
 
+
+/* Implementei a classe node para a lista duplamente encadeada */
+
 import java.time.Year;
 
 public class Node {
 	private String id;
 	private String nome;
+	private float nota;
+	private Node next;
+	private Node ant;
+
+	// construtores
+	public Node() {
+		this(1, 0, " ", 0.0f, null, null);  // Usa semestre = 1 e oldId = 0 como padrão
+	}
+	
+	
+	public Node(int semestre,int oldId,String nome,float notaPessoal,Node next, Node ant) {
+		int year = Year.now().getValue();
+		String idFinish = year + ".S" + semestre + "-" + oldId;
+		this.id = idFinish;
+		this.nome = nome;
+		this.nota = notaPessoal;
+		this.next = next;
+		this.ant = ant;
+	}
+
+
 	public String getNome() {
 		return nome;
 	}
@@ -29,7 +53,7 @@ public class Node {
 	}
 
 
-	private float nota;
+	
 	public float getNota() {
 		return nota;
 	}
@@ -39,35 +63,35 @@ public class Node {
 		this.nota = nota;
 	}
 
+	public String getID() {
+		return id;
+	}
 
-	private Node next;
+	public void setID(String ID) {
+		this.id = ID;
+	}
 
+
+	
+	// metodos para andar entre os nos
 	public Node getNext() {
 		return next;
 	}
 
+	public Node getAnt() {
+		return ant;
+	}
 
-	public void setNext(Node next) {
+
+	public void setProx(Node next) {
 		this.next = next;
 	}
 
+	public void setAnt(Node ant) {
+		this.ant = ant;
+	}
 
-	public Node() {
-		this(1, 0, " ", 0.0f, null);  // Usa semestre = 1 e oldId = 0 como padrão
-	}
-	
-	
-	public Node(int Semestre,int oldId,String nome,float notaPessoal,Node next) {
-		int year = Year.now().getValue();
-		String idFinish = year + ".S" + Semestre + "-" + oldId;
-		this.id = idFinish;
-		this.nome = nome;
-		this.nota = notaPessoal;
-		this.next = next;
-	}
 	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
+	// FAZER O TO STRING DO NODE
 
-	
-
-	
 }
