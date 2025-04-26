@@ -95,8 +95,9 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna uma referência para o nó do início da lista.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node getHead() {
+		if (! isEmpty()) return head;
+		else return null;
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
 	}
 
 
@@ -105,7 +106,8 @@ public class DLinkedList {
 //					Ou retorna null caso a lista esteja vazia.
 	public Node getTail() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if (! isEmpty()) return tail;
+		else return null;
 	}
 
 
@@ -115,7 +117,7 @@ public class DLinkedList {
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String id) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		
 	}
 
 
