@@ -34,7 +34,7 @@ public class DLinkedList {
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
 	public void insert(int Semestre,int Id,String nome,float nota) {
-		Node node = new Node(Semestre, Id,nome,nota, null);
+		Node node = new Node(Semestre, Id,nome,nota, head);
 		if (isEmpty()) {
 			tail = node;
 		}
