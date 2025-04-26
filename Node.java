@@ -83,11 +83,11 @@ public class Node {
 	}
 
 
-	public void setNext(Node next) {
+	public void setProx(Node next) {
 		this.next = next;
 	}
 
-	public void setTail(Node ant) {
+	public void setAnt(Node ant) {
 		this.tail = ant;
 	}
 

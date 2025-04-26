@@ -33,13 +33,15 @@ public class DLinkedList {
 // OPERAÇÃO:		insert(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
-	public void insert(int Semestre,int Id,String nome,float nota) {
-		Node node = new Node(Semestre, Id,nome,nota, head, tail);
+	public void insert(Node node) {
+
 		if (isEmpty()) {
-			tail = node;
+			head = tail = node;
+		} else {
+			node.setProx(head);
+			head.setAnt(node);
+			head = node;
 		}
-		
-		head = node;
 		count++;
 	}
 
@@ -47,16 +49,15 @@ public class DLinkedList {
 // OPERAÇÃO:		append(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no final da lista.
-	public void append(int Semestre,int Id,String nome,float nota) {
-		Node node = new Node(Semestre, Id,nome,nota, null, null);
+	public void append(Node node) {
 		
 		if (isEmpty()) {
-			head = node;
+			head = tail = node;
 		} else {
-			tail.setNext(node);
+			node.setProx(head);
+			node.setAnt(tail);
+			tail = node;
 		}
-		
-		tail = node;
 		++count;
 	}
 
@@ -75,7 +76,7 @@ public class DLinkedList {
 			head = tail = null;
 		} else {
 			head = head.getProx();
-			head.setNext(null);
+			head.setProx(null);
 		}
 		count--;
 		return aux;
@@ -97,7 +98,7 @@ public class DLinkedList {
 			head = tail = null;
 		} else {
 			tail = tail.getAnt();
-			tail.setNext(null);
+			tail.setProx(null);
 		}
 		count--;
 		return aux;
@@ -110,7 +111,7 @@ public class DLinkedList {
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node removeNode(String id) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		
 	}
 
 
@@ -156,8 +157,7 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna a quantidade de nós da lista.
 	public int count() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		if (isEmpty()) return 0;
-		else return count;
+		return count;
 	}
 
 
