@@ -38,7 +38,7 @@ public class DLinkedList {
 		if (isEmpty()) {
 			head = tail = node;
 		} else {
-			node.setNext(head);
+			node.setProx(head);
 			head.setAnt(node);
 			head = node;
 		}
@@ -54,7 +54,7 @@ public class DLinkedList {
 		if (isEmpty()) {
 			head = tail = node;
 		} else {
-			node.setNext(head);
+			node.setProx(head);
 			node.setAnt(tail);
 			tail = node;
 		}
@@ -80,7 +80,7 @@ public class DLinkedList {
 
 		}
 		count--;
-		aux.setNext(null);
+		aux.setProx(null);
 		aux.setAnt(null);
 		return aux;
 	}
@@ -101,11 +101,11 @@ public class DLinkedList {
 			head = tail = null;
 		} else {
 			tail = tail.getAnt();
-			tail.setNext(null);
+			tail.setProx(null);
 
 		}
 		count--;
-		aux.setNext(null);
+		aux.setProx(null);
 		aux.setAnt(null);
 		return aux;
 	}
@@ -127,7 +127,7 @@ public class DLinkedList {
 		Node anterior = node.getAnt();
 		Node proximo = node.getNext();
 
-		anterior.setNext(proximo);
+		anterior.setProx(proximo);
 		proximo.setAnt(anterior);
 		count--;
 

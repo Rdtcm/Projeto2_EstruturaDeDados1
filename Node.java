@@ -83,7 +83,7 @@ public class Node {
 	}
 
 
-	public void setNext(Node next) {
+	public void setProx(Node next) {
 		this.next = next;
 	}
 
