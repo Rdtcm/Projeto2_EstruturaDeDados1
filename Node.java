@@ -16,7 +16,6 @@
 
 
 /* Implementei a classe node para a lista duplamente encadeada */
-import java.time.Year;
 
 public class Node {
 	private String id;
@@ -24,6 +23,22 @@ public class Node {
 	private float nota;
 	private Node next;
 	private Node ant;
+
+	// construtores
+	public Node() {
+		this(1, 0, " ", 0.0f, null, null);  // Usa semestre = 1 e oldId = 0 como padrão
+	}
+	
+	
+	public Node(int semestre,int oldId,String nome,float notaPessoal,Node next, Node ant) {
+		int year = Year.now().getValue();
+		String idFinish = year + ".S" + semestre + "-" + oldId;
+		this.id = idFinish;
+		this.nome = nome;
+		this.nota = notaPessoal;
+		this.next = next;
+		this.ant = ant;
+	}
 
 
 	public String getNome() {
@@ -74,21 +89,6 @@ public class Node {
 		this.ant = ant;
 	}
 
-
-	public Node() {
-		this(1, 0, " ", 0.0f, null, null);  // Usa semestre = 1 e oldId = 0 como padrão
-	}
-	
-	
-	public Node(int semestre,int oldId,String nome,float notaPessoal,Node next, Node ant) {
-		int year = Year.now().getValue();
-		String idFinish = year + ".S" + semestre + "-" + oldId;
-		this.id = idFinish;
-		this.nome = nome;
-		this.nota = notaPessoal;
-		this.next = next;
-		this.ant = ant;
-	}
 	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
 
 }
