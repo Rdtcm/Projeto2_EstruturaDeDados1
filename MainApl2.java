@@ -17,11 +17,10 @@ public class MainApl2 {
 		String tex = " ";
 		// TODO: Carregar o conteúdo do arquivo "dados.txt" e adicionar cada linha como um nó na LinkedListOriginal list.
 		try{
-		tex = Data.loadTextFileToString("dados.txt");
+			tex = Data.loadTextFileToString("dados.txt");
 		}catch(Exception e){
 			System.out.println("none " + e);
 		}
-		System.out.println(tex);
 		
 		System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
 		System.out.println(list);
