@@ -3,7 +3,7 @@
 //******************** ATENÇÃO! *********************
 // arquivo: src/apl2/Data.java
 
-package apl2;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -28,6 +28,7 @@ public class Data {
 	 */
     public static String loadTextFileToString(String filename) throws FileNotFoundException, IOException {
         InputStream is = new FileInputStream(filename);
+        
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
 

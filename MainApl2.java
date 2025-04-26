@@ -8,19 +8,20 @@
 // TODO: Colocar a identificação dos(as) integrantes aqui.
 // TODO: Listar todas as referências consultadas para solucionar a atividade.
 
-import apl2.DLinkedList;
-import apl2.LinkedListOriginal;
-import apl2.Node;
-import apl2.Operation;
 
 public class MainApl2 {
 	
 	public static void main(String[] args) {
 		LinkedListOriginal list = new LinkedListOriginal();
 
-		
+		String tex = " ";
 		// TODO: Carregar o conteúdo do arquivo "dados.txt" e adicionar cada linha como um nó na LinkedListOriginal list.
-
+		try{
+		tex = Data.loadTextFileToString("dados.txt");
+		}catch(Exception e){
+			System.out.println("none " + e);
+		}
+		System.out.println(tex);
 		
 		System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
 		System.out.println(list);

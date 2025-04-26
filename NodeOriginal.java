@@ -3,7 +3,6 @@
 //******************** ATENÇÃO! *********************
 // arquivo: src/apl2/NodeOriginal.java
 
-package apl2;
 
 public class NodeOriginal {
 	

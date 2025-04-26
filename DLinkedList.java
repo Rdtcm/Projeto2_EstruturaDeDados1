@@ -2,7 +2,6 @@
 
 // TODO: Colocar a identificação dos(as) integrantes aqui.
 
-package apl2;
 
 // -- A classe DLinkedList (que pertence ao pacote apl2) deve implementar uma
 // lista duplamente encadeada. Os nós dessa lista são do tipo [da classe] Node.

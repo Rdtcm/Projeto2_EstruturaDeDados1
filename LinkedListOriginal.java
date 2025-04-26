@@ -3,7 +3,7 @@
 //******************** ATENÇÃO! *********************
 // arquivo: src/apl2/LinkedListOriginal.java
 
-package apl2;
+
 
 public class LinkedListOriginal {
 	

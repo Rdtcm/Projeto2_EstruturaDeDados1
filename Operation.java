@@ -5,7 +5,7 @@
 
 // TODO: Colocar a identificação dos(as) integrantes aqui.
 
-package apl2;
+import java.io.BufferedReader;
 
 public class Operation {
 
@@ -20,7 +20,9 @@ public class Operation {
 	 */
 	public static DLinkedList map(final LinkedListOriginal original) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		BufferedReader br = new BufferedReader();
+
+        StringBuilder sb = new StringBuilder();
 	}
 
 	/**
