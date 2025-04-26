@@ -34,13 +34,13 @@ public class DLinkedList {
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
 	public void insert(int Semestre,int Id,String nome,float nota) {
-		Node node = new Node(Semestre, Id,nome,nota, head);
+		Node node = new Node(Semestre, Id,nome,nota, head, tail);
 		if (isEmpty()) {
 			tail = node;
 		}
 		
 		head = node;
-		++count;
+		count++;
 	}
 
 
@@ -48,7 +48,7 @@ public class DLinkedList {
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no final da lista.
 	public void append(int Semestre,int Id,String nome,float nota) {
-		Node node = new Node(Semestre, Id,nome,nota, null);
+		Node node = new Node(Semestre, Id,nome,nota, null, null);
 		
 		if (isEmpty()) {
 			head = node;
@@ -67,8 +67,20 @@ public class DLinkedList {
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeHead() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if (isEmpty()) return null;
+
+		Node aux = head;
+
+		if (head == tail) {
+			head = tail = null;
+		} else {
+			head = head.getProx();
+			head.setNext(null);
+		}
+		count--;
+		return aux;
 	}
+	
 
 
 // OPERAÇÃO:		removeTail()
@@ -77,7 +89,18 @@ public class DLinkedList {
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeTail() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if (isEmpty()) return null;
+
+		Node aux = tail;
+
+		if (head == tail) {
+			head = tail = null;
+		} else {
+			tail = tail.getAnt();
+			tail.setNext(null);
+		}
+		count--;
+		return aux;
 	}
 
 
@@ -133,14 +156,15 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna a quantidade de nós da lista.
 	public int count() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if (isEmpty()) return 0;
+		else return count;
 	}
 
 
 // OPERAÇÃO:		isEmpty()
 // COMPORTAMENTO:	Retorna true se a lista estiver vazia ou false, caso contrário.
 	public boolean isEmpty() {
-		return head == null;
+		return head == null; // || tail == null;
 	}
 
 
