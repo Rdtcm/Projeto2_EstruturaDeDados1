@@ -93,5 +93,7 @@ public class Node {
 
 	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
 	// FAZER O TO STRING DO NODE
-
+	public String toString() {
+		return "[ant: "+ ant + "| dados: (" + id + ";" + nome + ";" + nota + ") | next:" + next + "]";
+	}
 }
