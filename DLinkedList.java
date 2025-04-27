@@ -201,8 +201,24 @@ public class DLinkedList {
 //					exemplo do método toString() da classe LinkedListOriginal).
 	@Override
 	public String toString() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("(" + count + ") \n");
+		
+		Node node = head;
+		while (node != null) {
+			sb.append("(")
+			.append(node.getID())
+			.append(" # ")
+			.append(node.getNome())
+			.append(" # ")
+			.append(node.getNota())
+			.append(") -> \n");
+			node = node.getNext();
+		}
+		sb.append("null.");
+		
+		return sb.toString();
+	}
 	}
 
-}

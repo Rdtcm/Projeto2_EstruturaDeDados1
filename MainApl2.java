@@ -7,6 +7,9 @@
 
 // TODO: Colocar a identificação dos(as) integrantes aqui.
 // TODO: Listar todas as referências consultadas para solucionar a atividade.
+import java.io.File;
+import java.io.StringReader;
+import java.io.BufferedReader;
 
 
 public class MainApl2 {
@@ -21,7 +24,34 @@ public class MainApl2 {
 		}catch(Exception e){
 			System.out.println("none " + e);
 		}
-		
+		BufferedReader br = new BufferedReader(new StringReader(tex));
+		DLinkedList listaNova = new DLinkedList();
+        StringBuilder sb = new StringBuilder();
+		String line ;
+		while (true) {
+			try{
+            line = br.readLine();
+			}catch(Exception e){
+			line = null;	
+			}
+            if (line == null) {
+                break;
+            }
+			String[] dividido = line.split("#");
+			Node dadoAluno = new Node();
+			int newId = Integer.parseInt(dividido[0]);
+			if(Float.parseFloat(dividido[2]) == -1 || Float.parseFloat(dividido[3]) == -1){
+				dadoAluno = new Node(newId,dividido[1],99.9f,null,null);
+			}else{
+			 float nota1 =  Float.parseFloat(dividido[2]);
+			 float nota2 = Float.parseFloat(dividido[3]);
+			 nota2 = nota2 * 0.1f;
+			 float notaFinal = nota1 + nota2;
+			 dadoAluno = new Node(newId,dividido[1],notaFinal,null,null);
+			}
+            listaNova.append(dadoAluno);
+        }
+		System.out.println(listaNova);
 		System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
 		System.out.println(list);
 		System.out.println("<<<<<<<<<< Dados originais (sistema legado) <<<<<<<<<<\n");

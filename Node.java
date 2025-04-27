@@ -18,6 +18,8 @@
 /* Implementei a classe node para a lista duplamente encadeada */
 
 import java.time.Year;
+import java.time.LocalDate;
+import java.time.Month;
 
 public class Node {
 	private String id;
@@ -28,13 +30,21 @@ public class Node {
 
 	// construtores
 	public Node() {
-		this(1, 0, " ", 0.0f, null, null);  // Usa semestre = 1 e oldId = 0 como padrão
+		this(1, " ", 0.0f, null, null);  // Usa semestre = 1 e oldId = 0 como padrão
 	}
 	
 	
-	public Node(int semestre,int oldId,String nome,float notaPessoal,Node next, Node ant) {
-		int year = Year.now().getValue();
-		String idFinish = year + ".S" + semestre + "-" + oldId;
+	public Node(int oldId, String nome,float notaPessoal,Node next, Node ant) {
+		LocalDate dataAtual = LocalDate.now();
+	int ano = dataAtual.getYear();
+	int mes = dataAtual.getMonthValue();
+		int sem;
+		if(mes <= 6){
+			sem = 1;
+		}else{
+			sem = 2;
+		}
+		String idFinish = ano + ".S" + sem + "-" + oldId;
 		this.id = idFinish;
 		this.nome = nome;
 		this.nota = notaPessoal;
