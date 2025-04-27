@@ -202,7 +202,27 @@ public class DLinkedList {
 	@Override
 	public String toString() {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("(" + count + ") \n");
+		
+		NodeOriginal node = head;
+		while (node != null) {
+			sb.append(node.getAnt())
+			.append(" <- ")
+			.append("(")
+			.append(node.getId())
+			.append(" ; ")
+			.append(node.getNome())
+			.append(" ; ")
+			.append(node.getNota())
+			.append(") -> ")
+			.append(node.getNext() + "\n");
+			
+			node = node.getNext();
+		}
+		return sb.toString();
+		//throw new UnsupportedOperationException("Método ainda não implementado.");
 	}
 
 }
