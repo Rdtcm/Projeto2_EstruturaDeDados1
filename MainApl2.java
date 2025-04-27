@@ -24,6 +24,7 @@ public class MainApl2 {
 		}catch(Exception e){
 			System.out.println("none " + e);
 		}
+		
 		BufferedReader br = new BufferedReader(new StringReader(tex));
 		DLinkedList listaNova = new DLinkedList();
         StringBuilder sb = new StringBuilder();
@@ -31,8 +32,9 @@ public class MainApl2 {
 		while (true) {
 			try{
             line = br.readLine();
+			
 			}catch(Exception e){
-			line = null;	
+				line ="";
 			}
             if (line == null) {
                 break;

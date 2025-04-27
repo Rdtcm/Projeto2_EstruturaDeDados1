@@ -34,13 +34,12 @@ public class DLinkedList {
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
 	public void insert(Node node) {
-
+		Node aux = node;
 		if (isEmpty()) {
 			head = tail = node;
 		} else {
-			node.setProx(head);
-			head.setAnt(node);
-			head = node;
+			aux.setNext(head);
+ 			head = aux;
 		}
 		count++;
 	}
@@ -51,14 +50,20 @@ public class DLinkedList {
 //					novo nó no final da lista.
 	public void append(Node node) {
 		
-		if (isEmpty()) {
-			head = tail = node;
-		} else {
-			node.setProx(head);
-			node.setAnt(tail);
-			tail = node;
-		}
-		++count;
+		Node aux; // Ponteiro auxiliar para o novo nó a ser inserido
+ 	Node pAnda; // Ponteiro que anda na lista ligada
+ 	 // se a lista não está cheia
+	aux = node; 
+	if (isEmpty()){ // Lista está vazia
+ 	head = tail = aux;
+	}else { // Insere no final e atualiza o ponteiro
+ 	pAnda = head; // Ponteiro que anda até o final da lista
+ 	while (pAnda.getNext() != null)
+ 	pAnda = pAnda.getNext();
+ 	pAnda.setNext(aux);
+	}
+	count++;
+	 // inserção realizada com sucesso
 	}
 
 
@@ -80,7 +85,7 @@ public class DLinkedList {
 
 		}
 		count--;
-		aux.setProx(null);
+		aux.setNext(null);
 		aux.setAnt(null);
 		return aux;
 	}
@@ -101,11 +106,11 @@ public class DLinkedList {
 			head = tail = null;
 		} else {
 			tail = tail.getAnt();
-			tail.setProx(null);
+			tail.setNext(null);
 
 		}
 		count--;
-		aux.setProx(null);
+		aux.setNext(null);
 		aux.setAnt(null);
 		return aux;
 	}
@@ -127,7 +132,7 @@ public class DLinkedList {
 		Node anterior = node.getAnt();
 		Node proximo = node.getNext();
 
-		anterior.setProx(proximo);
+		anterior.setNext(proximo);
 		proximo.setAnt(anterior);
 		count--;
 
