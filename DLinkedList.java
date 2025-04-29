@@ -50,20 +50,14 @@ public class DLinkedList {
 //					novo nó no final da lista.
 	public void append(Node node) {
 		
-		Node aux; // Ponteiro auxiliar para o novo nó a ser inserido
- 	Node pAnda; // Ponteiro que anda na lista ligada
- 	 // se a lista não está cheia
-	aux = node; 
-	if (isEmpty()){ // Lista está vazia
- 	head = tail = aux;
-	}else { // Insere no final e atualiza o ponteiro
- 	pAnda = head; // Ponteiro que anda até o final da lista
- 	while (pAnda.getNext() != null)
- 	pAnda = pAnda.getNext();
- 	pAnda.setNext(aux);
-	}
-	count++;
-	 // inserção realizada com sucesso
+		Node aux = node; // Novo nó a ser inserido
+	    if (isEmpty()) { // Lista está vazia
+	        head = tail = aux;
+	    } else { // Lista não está vazia
+	        tail.setNext(aux); // Atualiza o último nó
+	        tail = aux; // Atualiza a referência do tail
+	    }
+	    count++; // Incrementa o contador
 	}
 
 

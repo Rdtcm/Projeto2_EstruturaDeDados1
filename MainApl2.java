@@ -17,51 +17,47 @@ public class MainApl2 {
 	public static void main(String[] args) {
 		LinkedListOriginal list = new LinkedListOriginal();
 
-		String tex = " ";
+		String tex = "";
+		String title = "dados.txt";
 		// TODO: Carregar o conteúdo do arquivo "dados.txt" e adicionar cada linha como um nó na LinkedListOriginal list.
 		try{
-			tex = Data.loadTextFileToString("dados.txt");
+			tex = Data.loadTextFileToString(title);
 		}catch(Exception e){
 			System.out.println("none " + e);
 		}
 		
 		BufferedReader br = new BufferedReader(new StringReader(tex));
-		DLinkedList listaNova = new DLinkedList();
-        StringBuilder sb = new StringBuilder();
+		
+     StringBuilder sb = new StringBuilder();
 		String line ;
 		while (true) {
 			try{
-            line = br.readLine();
+         line = br.readLine();
 			
 			}catch(Exception e){
 				line ="";
 			}
-            if (line == null) {
-                break;
-            }
+         if (line == null) {
+             break;
+         }
 			String[] dividido = line.split("#");
-			Node dadoAluno = new Node();
+			NodeOriginal dadoAluno = new NodeOriginal();
 			int newId = Integer.parseInt(dividido[0]);
-			if(Float.parseFloat(dividido[2]) == -1 || Float.parseFloat(dividido[3]) == -1){
-				dadoAluno = new Node(newId,dividido[1],99.9f,null,null);
-			}else{
-			 float nota1 =  Float.parseFloat(dividido[2]);
-			 float nota2 = Float.parseFloat(dividido[3]);
-			 nota2 = nota2 * 0.1f;
-			 float notaFinal = nota1 + nota2;
-			 dadoAluno = new Node(newId,dividido[1],notaFinal,null,null);
-			}
-            listaNova.append(dadoAluno);
-        }
-		System.out.println(listaNova);
+			int inteiro = Integer.parseInt(dividido[2]);
+			int decimo = Integer.parseInt(dividido[3]);
+         list.append(newId,dividido[1],inteiro,decimo);
+     }
+		
 		System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
-		System.out.println(list);
+		System.out.println(list );
 		System.out.println("<<<<<<<<<< Dados originais (sistema legado) <<<<<<<<<<\n");
+		
 		
 		DLinkedList fixedList = Operation.map(list);
 		System.out.println(">>>>>>>>>> Dados convertidos para a nova representação dos dados >>>>>>>>>>");
 		System.out.println(fixedList);
 		System.out.println("<<<<<<<<<< Dados convertidos para a nova representação dos dados <<<<<<<<<<\n");
+		
 		
 		DLinkedList filteredGradedList = Operation.filterRemoveNonGraded(fixedList);
 		System.out.println(">>>>>>>>>> Lista filtrada (somente notas válidas) >>>>>>>>>>");
@@ -72,7 +68,7 @@ public class MainApl2 {
 		System.out.println(">>>>>>>>>> Lista filtrada (somente 'ausência de nota') >>>>>>>>>>");
 		System.out.println(filteredNonGradedList);
 		System.out.println("<<<<<<<<<< Lista filtrada (somente 'ausência de nota') <<<<<<<<<<\n");
-
+		
 		float average = Operation.reduce(filteredGradedList);
 		System.out.println(">>>>>>>>>> Média das notas válidas >>>>>>>>>>");
 		System.out.println(average);
@@ -82,7 +78,7 @@ public class MainApl2 {
 		System.out.println(">>>>>>>>>> Lista com notas acima da média >>>>>>>>>>");
 		System.out.println(aboveAverageList);
 		System.out.println("<<<<<<<<<< Lista com notas acima da média <<<<<<<<<<\n");
-		
+		/*
 		String contents = Operation.mapToString(fixedList);
 		System.out.println(">>>>>>>>>> Lista mapeada para uma única string >>>>>>>>>>");
 		System.out.println(contents);
@@ -127,7 +123,7 @@ public class MainApl2 {
 		// TODO: Inserir um nó no final da lista testList com os dados ("1234", "Um Dois Tres Quatro", 7.8f).
 		System.out.println(">>>>>>>>>> testList >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList <<<<<<<<<<\n");
 		testList.clear();
-		System.out.println(">>>>>>>>>> testList.clear() >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList.clear() <<<<<<<<<<\n");
+		System.out.println(">>>>>>>>>> testList.clear() >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList.clear() <<<<<<<<<<\n");*/
 	}
 
 }

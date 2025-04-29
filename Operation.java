@@ -33,10 +33,28 @@ public class Operation {
 	 */
 	public static DLinkedList map(final LinkedListOriginal original) {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		BufferedReader br = new BufferedReader();
-
-        StringBuilder sb = new StringBuilder();
+		DLinkedList listaNew = new DLinkedList();
+		int number = original.count();
+		
+		for(int i = 0 ; i < number  ;i++){
+			Node inserir = new Node();
+			NodeOriginal dadoAntigo = original.removeHead();
+			inserir.setID(dadoAntigo.getId());
+			inserir.setNome(dadoAntigo.getNome());
+			float inteiro = dadoAntigo.getInteiro();
+			float decimo = dadoAntigo.getDecimo();
+			if(inteiro == -1 || decimo == -1){
+				inserir.setNota(99.9f);
+			}else{
+				inserir.setNota(inteiro + ((decimo) * 0.1f));
+			}
+			listaNew.append(inserir);
+			original.append(dadoAntigo.getId(), dadoAntigo.getNome(), dadoAntigo.getInteiro(), dadoAntigo.getDecimo());
+		}
+		return listaNew;
 	}
+	
+
 
 	/**
 	 * <p>Recebe como parâmetro uma lista duplamente encadeada do tipo {@code DLinkedList}, sendo que os nós da lista estão
@@ -48,9 +66,29 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém a coleção de dados ({@code data}) filtrada com nós que possuem apenas pessoas com notas válidas.
 	 */
 	public static DLinkedList filterRemoveNonGraded(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		DLinkedList listaNew = new DLinkedList();
+		int number = data.count();
+
+		for (int i = 0; i < number; i++) {
+			Node dadoAntigo = data.removeHead();
+
+			if (dadoAntigo.getNota() != 99.9f) {
+				// Criando um novo nó com os mesmos dados
+				Node inserir = new Node();
+				inserir.setID(dadoAntigo.getID());
+				inserir.setNome(dadoAntigo.getNome());
+				inserir.setNota(dadoAntigo.getNota());
+
+				listaNew.append(inserir);
+			}
+
+			// Recoloca o nó original de volta na lista original
+			data.append(dadoAntigo);
+		}
+
+		return listaNew;
 	}
+
 
 	/**
 	 * <p>Recebe como parâmetro uma lista duplamente encadeada do tipo {@code DLinkedList}, sendo que os nós da lista estão
@@ -62,8 +100,27 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém a coleção de dados ({@code data}) filtrada com nós que possuem apenas pessoas com notas inválidas.
 	 */
 	public static DLinkedList filterRemoveGraded(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		DLinkedList listaNew = new DLinkedList();
+		int number = data.count();
+
+		for (int i = 0; i < number; i++) {
+			Node dadoAntigo = data.removeHead();
+
+			if (dadoAntigo.getNota() == 99.9f) {
+				// Criando um novo nó com os mesmos dados
+				Node inserir = new Node();
+				inserir.setID(dadoAntigo.getID());
+				inserir.setNome(dadoAntigo.getNome());
+				inserir.setNota(dadoAntigo.getNota());
+
+				listaNew.append(inserir);
+			}
+
+			// Recoloca o nó original de volta na lista original
+			data.append(dadoAntigo);
+		}
+
+		return listaNew;
 	}
 
 	/**
@@ -78,8 +135,27 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém a coleção de dados ({@code data}) filtrada somente com pessoas com notas maiores do que {@code average}.
 	 */
 	public static DLinkedList filterRemoveBelowAverage(final DLinkedList data, float average) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		DLinkedList listaNew = new DLinkedList();
+		int number = data.count();
+
+		for (int i = 0; i < number; i++) {
+			Node dadoAntigo = data.removeHead();
+
+			if (dadoAntigo.getNota() >= average) {
+				// Criando um novo nó com os mesmos dados
+				Node inserir = new Node();
+				inserir.setID(dadoAntigo.getID());
+				inserir.setNome(dadoAntigo.getNome());
+				inserir.setNota(dadoAntigo.getNota());
+
+				listaNew.append(inserir);
+			}
+
+			// Recoloca o nó original de volta na lista original
+			data.append(dadoAntigo);
+		}
+
+		return listaNew;
 	}
 	
 	/**
@@ -92,8 +168,23 @@ public class Operation {
 	 * @return Média das notas ({@code float}) contidas na coleção de dados ({@code data}).
 	 */
 	public static float reduce(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		int number = data.count();
+		float average = 0;
+		for (int i = 0; i < number; i++) {
+			Node dadoAntigo = data.removeHead();
+
+			if (dadoAntigo.getNota() != 99.9f) {
+				// Criando um novo nó com os mesmos dados
+				average += dadoAntigo.getNota(); 
+				
+				
+			}
+
+			// Recoloca o nó original de volta na lista original
+			data.append(dadoAntigo);
+		}
+		average = average / number;
+		return average;
 	}
 
 	/**
@@ -110,5 +201,6 @@ public class Operation {
 		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
 		throw new UnsupportedOperationException("Método ainda não implementado.");
 	}
+
 
 }

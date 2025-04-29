@@ -77,10 +77,24 @@ public class Node {
 		return id;
 	}
 
-	public void setID(String ID) {
-		this.id = ID;
+	public void setID(int ID) {
+		LocalDate dataAtual = LocalDate.now();
+		int ano = dataAtual.getYear();
+	int mes = dataAtual.getMonthValue();
+	int sem;
+		if(mes <= 6){
+			sem = 1;
+		}else{
+			sem = 2;
+		}
+		String idFinish = ano + ".S" + sem + "-" + ID;
+		this.id = idFinish;
 	}
 
+	public void setID(String ID) {
+		
+		this.id = ID;
+	}
 
 	
 	// metodos para andar entre os nos
