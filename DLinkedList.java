@@ -13,6 +13,20 @@
 // -- A classe deve implementar as operações a seguir, respeitando o
 // comportamento descrito em cada operação.
 
+/*
+Nome:Alef de souza Iima
+RA:10431891
+-------------------------------
+Nome:Derick Sant’Ana Nascimento
+RA:10443727
+-------------------------------
+Nome:Renan Horochk de Andrade
+RA:10438120
+-------------------------------
+Nome:Ryan Vinicius Ledo
+RA:10352727
+ */
+
 public class DLinkedList {
 	
 	private Node head;
@@ -33,12 +47,12 @@ public class DLinkedList {
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
 	public void insert(Node node) {
-		Node aux = node;
 		if (isEmpty()) {
 			head = tail = node;
 		} else {
-			aux.setNext(head);
- 			head = aux;
+			node.setNext(head);
+			head.setAnt(node);
+			head = node;
 		}
 		count++;
 	}
@@ -48,13 +62,12 @@ public class DLinkedList {
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no final da lista.
 	public void append(Node node) {
-		
-		Node aux = node; // Novo nó a ser inserido
-	    if (isEmpty()) { // Lista está vazia
-	        head = tail = aux;
+	    if (isEmpty()) { 
+	        head = tail = node;
 	    } else { // Lista não está vazia
-	        tail.setNext(aux); // Atualiza o último nó
-	        tail = aux; // Atualiza a referência do tail
+	        node.setAnt(tail);
+			tail.setNext(node);
+			tail = node;
 	    }
 	    count++; // Incrementa o contador
 	}
@@ -114,7 +127,7 @@ public class DLinkedList {
 	public Node removeNode(String id) {
 		Node node = getNode(id);
 
-		if (isEmpty()) return null;
+		if (node == null || isEmpty()) return null;
 
 		if (node == head) return removeHead();
 		if (node == tail) return removeTail();
@@ -213,5 +226,5 @@ public class DLinkedList {
 		
 		return sb.toString();
 	}
-	}
+}
 

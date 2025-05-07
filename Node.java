@@ -14,12 +14,21 @@
 // -- A classe deve sobrescrever (override) o método public String toString()
 // {...}, retornando uma string com os valores dos atributos da classe.
 
+/*
+Nome:Alef de souza Iima
+RA:10431891
+-------------------------------
+Nome:Derick Sant’Ana Nascimento
+RA:10443727
+-------------------------------
+Nome:Renan Horochk de Andrade
+RA:10438120
+-------------------------------
+Nome:Ryan Vinicius Ledo
+RA:10352727
+ */
 
-/* Implementei a classe node para a lista duplamente encadeada */
-
-import java.time.Year;
 import java.time.LocalDate;
-import java.time.Month;
 
 public class Node {
 	private String id;
@@ -31,6 +40,12 @@ public class Node {
 	// construtores
 	public Node() {
 		this(1, " ", 0.0f, null, null);  // Usa semestre = 1 e oldId = 0 como padrão
+	}
+
+	public Node(String id, String nome, float nota) {
+		this.id = id;
+		this.nome = nome;
+		this.nota = nota;
 	}
 	
 	
@@ -117,5 +132,18 @@ public class Node {
 
 	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
 	// FAZER O TO STRING DO NODE
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+			sb.append("(")
+			.append(getID())
+			.append(" # ")
+			.append(getNome())
+			.append(" # ")
+			.append(getNota())
+			.append(") -> \n");
+		
+		return sb.toString();
+	}
 
 }
