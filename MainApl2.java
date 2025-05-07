@@ -6,10 +6,29 @@
 // arquivo: src/MainApl2.java
 
 // TODO: Colocar a identificação dos(as) integrantes aqui.
+/*
+Nome:Alef de souza Iima
+RA:10431891
+-------------------------------
+Nome:Derick Sant’Ana Nascimento
+RA:10443727
+-------------------------------
+Nome:Renan Horochk de Andrade
+RA:10438120
+-------------------------------
+Nome:Ryan Vinicius Ledo
+RA:10352727
+ */
+
 // TODO: Listar todas as referências consultadas para solucionar a atividade.
-import java.io.File;
-import java.io.StringReader;
+
+/*Referencias:
+ * https://pt.stackoverflow.com/questions/374001/lista-duplamente-encadeada-java
+ * 
+ */
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 
 
 public class MainApl2 {
@@ -19,7 +38,7 @@ public class MainApl2 {
 
 		String tex = "";
 		String title = "dados.txt";
-		// TODO: Carregar o conteúdo do arquivo "dados.txt" e adicionar cada linha como um nó na LinkedListOriginal list.
+	
 		try{
 			tex = Data.loadTextFileToString(title);
 		}catch(Exception e){
@@ -78,7 +97,14 @@ public class MainApl2 {
 		System.out.println(">>>>>>>>>> Lista com notas acima da média >>>>>>>>>>");
 		System.out.println(aboveAverageList);
 		System.out.println("<<<<<<<<<< Lista com notas acima da média <<<<<<<<<<\n");
-		/*
+
+
+
+		// daqui para baixo
+
+
+
+
 		String contents = Operation.mapToString(fixedList);
 		System.out.println(">>>>>>>>>> Lista mapeada para uma única string >>>>>>>>>>");
 		System.out.println(contents);
@@ -86,6 +112,12 @@ public class MainApl2 {
 		
 		
 		// TODO: Salvar o conteúdo da String contents em um arquivo chamado "dados.csv".
+		try {
+			Data.saveStringToTextFile("dados.csv", contents);
+		} catch (IOException e) {
+			System.out.println("Erro ao salvar a string contents no arquivo dados.csv: " + e);
+		}
+
 
 		
 		Node test1 = fixedList.getNode("23.S1-999");
@@ -102,9 +134,14 @@ public class MainApl2 {
 
 		DLinkedList testList = new DLinkedList();
 		// TODO: Inserir um nó no início da lista testList com os dados ("ABC", "John Doe", 4.7f).
+	 	testList.insert(new Node("ABC", "John Doe", 4.7f));
 		// TODO: Inserir um nó no final da lista testList com os dados ("XYZ", "Jane Doe", 9.9f).
+		testList.append(new Node("XYZ", "Jane Doe", 9.9f));
 		// TODO: Inserir um nó no início da lista testList com os dados ("321", "Test", 2.3f).
+		testList.insert(new Node("321", "Test", 2.3f));
 		// TODO: Inserir um nó no final da lista testList com os dados ("Nothing", "Yada yada yada", 99.9f).
+		testList.append(new Node("Nothing", "Yada yada yada", 99.9f));
+
 		System.out.println(">>>>>>>>>> testList >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList <<<<<<<<<<\n");
 		System.out.println("testList.getHead(): " + testList.getHead());
 		System.out.println("testList.getTail(): " + testList.getTail());
@@ -117,13 +154,19 @@ public class MainApl2 {
 		System.out.println(">>>>>>>>>> testList >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList <<<<<<<<<<\n");
 		System.out.println("testList.getHead(): " + testList.getHead());
 		System.out.println("testList.getTail(): " + testList.getTail() + '\n');
+
 		// TODO: Inserir um nó no início da lista testList com os dados ("qwerty", "QWERTY", 1.2f).
+		testList.insert(new Node("qwerty", "QWERTY", 1.2f));
 		// TODO: Inserir um nó no final da lista testList com os dados ("WASD", "wasd", 3.4f).
+		testList.append(new Node("WASD", "wasd", 3.4f));
 		// TODO: Inserir um nó no início da lista testList com os dados ("ijkl", "IJKL", 5.6f).
+		testList.insert(new Node("ijkl", "IJKL", 5.6f));
 		// TODO: Inserir um nó no final da lista testList com os dados ("1234", "Um Dois Tres Quatro", 7.8f).
+		testList.append(new Node("1234", "Um Dois Tres Quatro", 7.8f));
+
 		System.out.println(">>>>>>>>>> testList >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList <<<<<<<<<<\n");
 		testList.clear();
-		System.out.println(">>>>>>>>>> testList.clear() >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList.clear() <<<<<<<<<<\n");*/
+		System.out.println(">>>>>>>>>> testList.clear() >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList.clear() <<<<<<<<<<\n");
 	}
-
+	
 }

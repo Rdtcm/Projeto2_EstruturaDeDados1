@@ -1,4 +1,4 @@
-//*************************** ATENÇÃO! *****************************
+
 // As assinaturas dos métodos desta classe não devem ser alteradas!
 //*************************** ATENÇÃO! *****************************
 // arquivo: src/apl2/Operation.java
@@ -18,8 +18,6 @@ Nome:Ryan Vinicius Ledo
 RA:10352727
  */
 
-import java.io.BufferedReader;
-
 public class Operation {
 
 	/**
@@ -32,7 +30,6 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém o mapeamento da coleção de dados {@code original} para a nova estrutura usada pelo sistema de notas. 
 	 */
 	public static DLinkedList map(final LinkedListOriginal original) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
 		DLinkedList listaNew = new DLinkedList();
 		int number = original.count();
 		
@@ -198,8 +195,21 @@ public class Operation {
 	 * @return {@code String} com a coleção de dados separada por ponto-e-vírgula (dados de cada pessoa) e quebras de linha (cada pessoa).
 	 */
 	public static String mapToString(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		StringBuilder sb = new StringBuilder();
+
+		Node aux = data.getHead();
+		while(aux != null)
+		{
+			sb.append(aux.getID())
+				.append(";")
+				.append(aux.getNome())
+				.append(";")
+				.append(aux.getNota())
+				.append("\n");
+			
+			aux = aux.getNext();
+		}
+		return sb.toString();
 	}
 
 

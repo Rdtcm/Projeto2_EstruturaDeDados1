@@ -13,9 +13,22 @@
 // -- A classe deve implementar as operações a seguir, respeitando o
 // comportamento descrito em cada operação.
 
+/*
+Nome:Alef de souza Iima
+RA:10431891
+-------------------------------
+Nome:Derick Sant’Ana Nascimento
+RA:10443727
+-------------------------------
+Nome:Renan Horochk de Andrade
+RA:10438120
+-------------------------------
+Nome:Ryan Vinicius Ledo
+RA:10352727
+ */
+
 public class DLinkedList {
 	
-	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
 	private Node head;
 	private Node tail;
 	private int count;
@@ -34,12 +47,12 @@ public class DLinkedList {
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no início da lista.
 	public void insert(Node node) {
-		Node aux = node;
 		if (isEmpty()) {
 			head = tail = node;
 		} else {
-			aux.setNext(head);
- 			head = aux;
+			node.setNext(head);
+			head.setAnt(node);
+			head = node;
 		}
 		count++;
 	}
@@ -49,13 +62,12 @@ public class DLinkedList {
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no final da lista.
 	public void append(Node node) {
-		
-		Node aux = node; // Novo nó a ser inserido
-	    if (isEmpty()) { // Lista está vazia
-	        head = tail = aux;
+	    if (isEmpty()) { 
+	        head = tail = node;
 	    } else { // Lista não está vazia
-	        tail.setNext(aux); // Atualiza o último nó
-	        tail = aux; // Atualiza a referência do tail
+	        node.setAnt(tail);
+			tail.setNext(node);
+			tail = node;
 	    }
 	    count++; // Incrementa o contador
 	}
@@ -66,7 +78,6 @@ public class DLinkedList {
 //					nó removido.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeHead() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
 		if (isEmpty()) return null;
 
 		Node aux = head;
@@ -91,7 +102,6 @@ public class DLinkedList {
 //					nó removido.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeTail() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
 		if (isEmpty()) return null;
 
 		Node aux = tail;
@@ -115,10 +125,9 @@ public class DLinkedList {
 //					a referência do nó removido.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node removeNode(String id) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
 		Node node = getNode(id);
 
-		if (isEmpty()) return null;
+		if (node == null || isEmpty()) return null;
 
 		if (node == head) return removeHead();
 		if (node == tail) return removeTail();
@@ -140,7 +149,6 @@ public class DLinkedList {
 	public Node getHead() {
 		if (! isEmpty()) return head;
 		else return null;
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
 	}
 
 
@@ -148,7 +156,6 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna uma referência para o nó do final da lista.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node getTail() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
 		if (! isEmpty()) return tail;
 		else return null;
 	}
@@ -219,5 +226,5 @@ public class DLinkedList {
 		
 		return sb.toString();
 	}
-	}
+}
 
