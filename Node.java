@@ -52,6 +52,7 @@ public class Node {
 	public Node(int oldId, String nome,float notaPessoal,Node next, Node ant) {
 		LocalDate dataAtual = LocalDate.now();
 	int ano = dataAtual.getYear();
+	ano = ano - 2000;
 	int mes = dataAtual.getMonthValue();
 		int sem;
 		if(mes <= 6){
@@ -134,12 +135,25 @@ public class Node {
 	// FAZER O TO STRING DO NODE
 	@Override
 	public String toString() {
+		LocalDate dataAtual = LocalDate.now();
+	int ano = dataAtual.getYear();
+	ano = ano - 2000;
+	int mes = dataAtual.getMonthValue();
+	int sem;
+		if(mes <= 6){
+			sem = 1;
+		}else{
+			sem = 2;
+		}
 		StringBuilder sb = new StringBuilder();
 			sb.append("(")
+			.append(ano)
+			.append(".S")
+			.append(sem)
 			.append(getID())
-			.append(" # ")
+			.append(";")
 			.append(getNome())
-			.append(" # ")
+			.append(";")
 			.append(getNota())
 			.append(") -> \n");
 		

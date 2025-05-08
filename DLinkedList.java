@@ -26,6 +26,7 @@ RA:10438120
 Nome:Ryan Vinicius Ledo
 RA:10352727
  */
+import java.time.LocalDate;
 
 public class DLinkedList {
 	
@@ -209,18 +210,31 @@ public class DLinkedList {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
+		LocalDate dataAtual = LocalDate.now();
+	int ano = dataAtual.getYear();
+	ano = ano - 2000;
+	int mes = dataAtual.getMonthValue();
+	int sem;
+		if(mes <= 6){
+			sem = 1;
+		}else{
+			sem = 2;
+		}
 		sb.append("(" + count + ") \n");
 		
 		Node node = head;
 		while (node != null) {
 			sb.append("(")
+			.append(ano)
+			.append(".S")
+			.append(sem)
 			.append(node.getID())
-			.append(" # ")
+			.append(";")
 			.append(node.getNome())
-			.append(" # ")
+			.append(";")
 			.append(node.getNota())
 			.append(") -> \n");
-			node = node.getNext();
+			node  = node.getNext();
 		}
 		sb.append("null.");
 		
